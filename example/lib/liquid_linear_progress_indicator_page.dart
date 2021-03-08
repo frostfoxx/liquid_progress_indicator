@@ -19,6 +19,9 @@ class LiquidLinearProgressIndicatorPage extends StatelessWidget {
             child: LiquidLinearProgressIndicator(
               backgroundColor: Colors.black,
               valueColor: AlwaysStoppedAnimation(Colors.red),
+              borderColor: Colors.red,
+              borderRadius: 12.0,
+              borderWidth: 5.0,
             ),
           ),
           Container(
@@ -31,6 +34,7 @@ class LiquidLinearProgressIndicatorPage extends StatelessWidget {
               borderColor: Colors.red,
               borderWidth: 5.0,
               direction: Axis.vertical,
+              borderRadius: 12.0,
             ),
           ),
           Container(
@@ -42,6 +46,7 @@ class LiquidLinearProgressIndicatorPage extends StatelessWidget {
               valueColor: AlwaysStoppedAnimation(Colors.grey),
               borderColor: Colors.blue,
               borderWidth: 5.0,
+              borderRadius: 12.0,
               center: Text(
                 "Loading...",
                 style: TextStyle(
@@ -59,6 +64,9 @@ class LiquidLinearProgressIndicatorPage extends StatelessWidget {
               backgroundColor: Colors.lightGreen,
               valueColor: AlwaysStoppedAnimation(Colors.blueGrey),
               direction: Axis.vertical,
+              borderColor: Colors.red,
+              borderRadius: 12.0,
+              borderWidth: 5.0,
             ),
           ),
         ],
@@ -76,7 +84,7 @@ class _AnimatedLiquidLinearProgressIndicator extends StatefulWidget {
 class _AnimatedLiquidLinearProgressIndicatorState
     extends State<_AnimatedLiquidLinearProgressIndicator>
     with SingleTickerProviderStateMixin {
-  AnimationController _animationController;
+  late AnimationController _animationController;
 
   @override
   void initState() {
@@ -109,6 +117,8 @@ class _AnimatedLiquidLinearProgressIndicatorState
           backgroundColor: Colors.white,
           valueColor: AlwaysStoppedAnimation(Colors.blue),
           borderRadius: 12.0,
+          borderColor: Colors.red,
+          borderWidth: 5.0,
           center: Text(
             "${percentage.toStringAsFixed(0)}%",
             style: TextStyle(

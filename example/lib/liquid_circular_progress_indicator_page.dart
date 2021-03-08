@@ -21,6 +21,8 @@ class LiquidCircularProgressIndicatorPage extends StatelessWidget {
                 child: LiquidCircularProgressIndicator(
                   backgroundColor: Colors.black,
                   valueColor: AlwaysStoppedAnimation(Colors.red),
+                  borderColor: Colors.red,
+                  borderWidth: 5.0,
                 ),
               ),
               SizedBox(
@@ -58,6 +60,8 @@ class LiquidCircularProgressIndicatorPage extends StatelessWidget {
                   backgroundColor: Colors.lightGreen,
                   valueColor: AlwaysStoppedAnimation(Colors.blueGrey),
                   direction: Axis.horizontal,
+                  borderColor: Colors.blue,
+                  borderWidth: 5.0,
                 ),
               ),
             ],
@@ -77,7 +81,7 @@ class _AnimatedLiquidCircularProgressIndicator extends StatefulWidget {
 class _AnimatedLiquidCircularProgressIndicatorState
     extends State<_AnimatedLiquidCircularProgressIndicator>
     with SingleTickerProviderStateMixin {
-  AnimationController _animationController;
+  late AnimationController _animationController;
 
   @override
   void initState() {
@@ -108,6 +112,8 @@ class _AnimatedLiquidCircularProgressIndicatorState
           value: _animationController.value,
           backgroundColor: Colors.white,
           valueColor: AlwaysStoppedAnimation(Colors.blue),
+          borderColor: Colors.blue,
+          borderWidth: 5.0,
           center: Text(
             "${percentage.toStringAsFixed(0)}%",
             style: TextStyle(
