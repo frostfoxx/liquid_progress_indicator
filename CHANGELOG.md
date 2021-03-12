@@ -1,50 +1,55 @@
+## [1.0.0]
+
+- Add null-safety support, bump min SDK version.
+- Note: No further updates are planned for this package.
+
 ## [0.3.2]
 
-* Fixed issue with CustomProgressIndicator not displaying correctly when using the context to determine size.
+- Fixed issue with CustomProgressIndicator not displaying correctly when using the context to determine size.
 
 ## [0.3.1]
 
-* Updated examples.
-* Updated artwork.
+- Updated examples.
+- Updated artwork.
 
 ## [0.3.0]
 
-* Added LiquidCustomProgressIndicator.
+- Added LiquidCustomProgressIndicator.
 
 ## [0.2.4]
 
-* Updated dependencies.
+- Updated dependencies.
 
 ## [0.2.3]
 
-* Updated documentation.
+- Updated documentation.
 
 ## [0.2.2]
 
-* Updated artwork.
+- Updated artwork.
 
 ## [0.2.1]
 
-* Ran formatter.
+- Ran formatter.
 
 ## [0.2.0]
 
-* Added LiquidLinearProgressIndicator.
+- Added LiquidLinearProgressIndicator.
 
 ## [0.1.1]
 
-* Refactoring.
-* Added direction property to LiquidCircularProgressIndicator.
+- Refactoring.
+- Added direction property to LiquidCircularProgressIndicator.
 
 ## [0.1.0]
 
-* Added borderColor and borderWidth properties to LiquidCircularProgressIndicator.
-* Added more examples to the example project.
+- Added borderColor and borderWidth properties to LiquidCircularProgressIndicator.
+- Added more examples to the example project.
 
 ## [0.0.2]
 
-* Updated documentation.
+- Updated documentation.
 
 ## [0.0.1]
 
-* Initial release.
+- Initial release.
