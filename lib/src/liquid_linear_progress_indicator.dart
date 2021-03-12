@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:liquid_progress_indicator/src/wave.dart';
+import 'package:liquid_progress_indicator_ns/src/wave.dart';
 
 class LiquidLinearProgressIndicator extends ProgressIndicator {
   ///The width of the border, if this is set [borderColor] must also be set.

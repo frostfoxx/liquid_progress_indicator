@@ -1,6 +1,6 @@
-# liquid_progress_indicator  
-  
-Liquid progress indicator for Flutter. 
+# liquid_progress_indicator
+
+Liquid progress indicator for Flutter.
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/JordanADavies/liquid_progress_indicator/master/art/liquid_circular_progress_indicator.gif" width=250>
@@ -18,7 +18,7 @@ Liquid progress indicator for Flutter.
   
 ## Usage
 
-    import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
+    import 'package:liquid_progress_indicator_ns/liquid_progress_indicator.dart';
 
 ### LiquidCircularProgressIndicator
 
@@ -31,7 +31,7 @@ Liquid progress indicator for Flutter.
       direction: Axis.horizontal, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
       center: Text("Loading..."),
     );
-    
+
 ### LiquidLinearProgressIndicator
 
     LiquidLinearProgressIndicator(
@@ -44,9 +44,9 @@ Liquid progress indicator for Flutter.
       direction: Axis.vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.horizontal.
       center: Text("Loading..."),
     );
-    
+
 ### LiquidCustomProgressIndicator
-    
+
     LiquidCustomProgressIndicator(
       value: 0.2 // Defaults to 0.5.
       valueColor: AlwaysStoppedAnimation(Colors.pink), // Defaults to the current Theme's accentColor.
@@ -54,5 +54,3 @@ Liquid progress indicator for Flutter.
       direction: Axis.vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right).
       shapePath: _buildBoatPath(), // A Path object used to draw the shape of the progress indicator. The size of the progress indicator is created from the bounds of this path.
     )
-
-
