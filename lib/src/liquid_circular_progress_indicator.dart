@@ -9,10 +9,10 @@ const double _sweep = _twoPi - _epsilon;
 
 class LiquidCircularProgressIndicator extends ProgressIndicator {
   ///The width of the border, if this is set [borderColor] must also be set.
-  final double borderWidth;
+  final double? borderWidth;
 
   ///The color of the border, if this is set [borderWidth] must also be set.
-  final Color borderColor;
+  final Color? borderColor;
 
   ///The widget to show in the center of the progress indicator.
   final Widget? center;
@@ -34,7 +34,12 @@ class LiquidCircularProgressIndicator extends ProgressIndicator {
           value: value,
           backgroundColor: backgroundColor,
           valueColor: valueColor,
-        );
+        ) {
+    if (borderWidth != null && borderColor == null ||
+        borderColor != null && borderWidth == null) {
+      throw ArgumentError("borderWidth and borderColor should both be set.");
+    }
+  }
 
   Color _getBackgroundColor(BuildContext context) =>
       backgroundColor ?? Theme.of(context).backgroundColor;
@@ -58,8 +63,8 @@ class _LiquidCircularProgressIndicatorState
           color: widget._getBackgroundColor(context),
         ),
         foregroundPainter: _CircleBorderPainter(
-          color: widget.borderColor,
-          width: widget.borderWidth,
+          color: widget.borderColor!,
+          width: widget.borderWidth!,
         ),
         child: Stack(
           children: [
@@ -92,20 +97,23 @@ class _CirclePainter extends CustomPainter {
 }
 
 class _CircleBorderPainter extends CustomPainter {
-  final Color color;
-  final double width;
+  final Color? color;
+  final double? width;
 
   _CircleBorderPainter({required this.color, required this.width});
 
   @override
   void paint(Canvas canvas, Size size) {
+    if (color == null || width == null) {
+      return;
+    }
     final borderPaint = Paint()
-      ..color = color
+      ..color = color!
       ..style = PaintingStyle.stroke
-      ..strokeWidth = width;
-    final newSize = Size(size.width - width, size.height - width);
-    canvas.drawArc(
-        Offset(width / 2, width / 2) & newSize, 0, _sweep, false, borderPaint);
+      ..strokeWidth = width!;
+    final newSize = Size(size.width - width!, size.height - width!);
+    canvas.drawArc(Offset(width! / 2, width! / 2) & newSize, 0, _sweep, false,
+        borderPaint);
   }
 
   @override

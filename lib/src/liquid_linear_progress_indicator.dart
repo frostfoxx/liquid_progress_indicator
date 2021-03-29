@@ -3,13 +3,13 @@ import 'package:liquid_progress_indicator/src/wave.dart';
 
 class LiquidLinearProgressIndicator extends ProgressIndicator {
   ///The width of the border, if this is set [borderColor] must also be set.
-  final double borderWidth;
+  final double? borderWidth;
 
   ///The color of the border, if this is set [borderWidth] must also be set.
-  final Color borderColor;
+  final Color? borderColor;
 
   ///The radius of the border.
-  final double borderRadius;
+  final double? borderRadius;
 
   ///The widget to show in the center of the progress indicator.
   final Widget? center;
@@ -22,9 +22,9 @@ class LiquidLinearProgressIndicator extends ProgressIndicator {
     double value = 0.5,
     Color? backgroundColor,
     Animation<Color>? valueColor,
-    required this.borderWidth,
-    required this.borderColor,
-    required this.borderRadius,
+    this.borderWidth,
+    this.borderColor,
+    this.borderRadius,
     this.center,
     this.direction = Axis.horizontal,
   }) : super(
@@ -32,7 +32,12 @@ class LiquidLinearProgressIndicator extends ProgressIndicator {
           value: value,
           backgroundColor: backgroundColor,
           valueColor: valueColor,
-        );
+        ) {
+    if (borderWidth != null && borderColor == null ||
+        borderColor != null && borderWidth == null) {
+      throw ArgumentError("borderWidth and borderColor should both be set.");
+    }
+  }
 
   Color _getBackgroundColor(BuildContext context) =>
       backgroundColor ?? Theme.of(context).backgroundColor;
@@ -50,17 +55,17 @@ class _LiquidLinearProgressIndicatorState
   Widget build(BuildContext context) {
     return ClipPath(
       clipper: _LinearClipper(
-        radius: widget.borderRadius,
+        radius: widget.borderRadius!,
       ),
       child: CustomPaint(
         painter: _LinearPainter(
           color: widget._getBackgroundColor(context),
-          radius: widget.borderRadius,
+          radius: widget.borderRadius!,
         ),
         foregroundPainter: _LinearBorderPainter(
-          color: widget.borderColor,
-          width: widget.borderWidth,
-          radius: widget.borderRadius,
+          color: widget.borderColor!,
+          width: widget.borderWidth!,
+          radius: widget.borderRadius!,
         ),
         child: Stack(
           children: <Widget>[
@@ -79,9 +84,9 @@ class _LiquidLinearProgressIndicatorState
 
 class _LinearPainter extends CustomPainter {
   final Color color;
-  final double radius;
+  final double? radius;
 
-  _LinearPainter({required this.color, required this.radius});
+  _LinearPainter({required this.color, this.radius});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -89,7 +94,7 @@ class _LinearPainter extends CustomPainter {
     canvas.drawRRect(
         RRect.fromRectAndRadius(
           Rect.fromLTWH(0, 0, size.width, size.height),
-          Radius.circular(radius),
+          Radius.circular(radius ?? 0),
         ),
         paint);
   }
@@ -99,9 +104,9 @@ class _LinearPainter extends CustomPainter {
 }
 
 class _LinearBorderPainter extends CustomPainter {
-  final Color color;
-  final double width;
-  final double radius;
+  final Color? color;
+  final double? width;
+  final double? radius;
 
   _LinearBorderPainter({
     required this.color,
@@ -111,16 +116,19 @@ class _LinearBorderPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    if (color == null || width == null) {
+      return;
+    }
     final paint = Paint()
-      ..color = color
+      ..color = color!
       ..style = PaintingStyle.stroke
-      ..strokeWidth = width;
-    final alteredRadius = radius;
+      ..strokeWidth = width!;
+    final alteredRadius = radius ?? 0;
     canvas.drawRRect(
         RRect.fromRectAndRadius(
-          Rect.fromLTWH(
-              width / 2, width / 2, size.width - width, size.height - width),
-          Radius.circular(alteredRadius - width),
+          Rect.fromLTWH(width! / 2, width! / 2, size.width - width!,
+              size.height - width!),
+          Radius.circular((alteredRadius - width!)),
         ),
         paint);
   }
