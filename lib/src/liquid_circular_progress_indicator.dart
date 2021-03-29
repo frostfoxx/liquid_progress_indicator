@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:liquid_progress_indicator_ns/src/wave.dart';
+import 'package:liquid_progress_indicator/src/wave.dart';
 
 const double _twoPi = math.pi * 2.0;
 const double _epsilon = .001;

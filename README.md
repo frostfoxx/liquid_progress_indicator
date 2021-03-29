@@ -1,4 +1,4 @@
-# liquid_progress_indicator
+# liquid_progress_indicator_ns
 
 Liquid progress indicator for Flutter.
 
